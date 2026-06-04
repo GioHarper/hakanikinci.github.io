@@ -3,176 +3,477 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hakan İkinci | Personal Website</title>
-  <meta name="description" content="Official personal website of Hakan İkinci. Education support, localization, content operations, and customer-facing technology." />
+
+  <title>Hakan İkinci</title>
+  <meta name="description" content="Official personal website of Hakan İkinci. Technology, language, education, support, content, and localization." />
 
   <style>
+    :root {
+      --bg: #f5f1e8;
+      --text: #171717;
+      --muted: #625d52;
+      --card: #ffffff;
+      --line: #ded6c8;
+      --dark: #151515;
+      --accent: #8a5a2b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f6f4ef;
-      color: #1f1f1f;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 920px;
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 56px 24px;
+      padding: 28px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 22px;
+    }
+
+    nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
     }
 
     .hero {
-      padding: 72px 0 48px;
-      border-bottom: 1px solid #ddd6c8;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 42px;
+      align-items: center;
+      padding: 72px 0;
     }
 
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.14em;
+      color: var(--accent);
+      font-weight: 800;
       font-size: 13px;
-      color: #6f6658;
-      font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 82px);
-      line-height: 0.95;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
       margin: 0 0 24px;
-      letter-spacing: -0.05em;
     }
 
     .lead {
       font-size: 22px;
-      max-width: 760px;
-      color: #3f3b35;
-      margin-bottom: 32px;
+      max-width: 680px;
+      color: #34302a;
+      margin-bottom: 28px;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .button {
       display: inline-block;
-      text-decoration: none;
       padding: 12px 18px;
       border-radius: 999px;
-      border: 1px solid #1f1f1f;
-      color: #1f1f1f;
-      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--dark);
+      font-weight: 800;
     }
 
     .button.primary {
-      background: #1f1f1f;
-      color: #fff;
+      background: var(--dark);
+      color: white;
+    }
+
+    .photo-card {
+      background: var(--dark);
+      color: white;
+      min-height: 430px;
+      border-radius: 30px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.75)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    .photo-card p {
+      margin: 0;
+      font-size: 15px;
+      color: #e8e0d2;
     }
 
     section {
-      padding: 42px 0;
-      border-bottom: 1px solid #ddd6c8;
+      padding: 58px 0;
+      border-top: 1px solid var(--line);
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
       margin: 0 0 18px;
-      letter-spacing: -0.03em;
     }
 
-    .grid {
+    .section-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 26px;
+      align-items: stretch;
     }
 
-    .card {
-      background: #fff;
-      border: 1px solid #e4ded2;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    .side-image {
+      border-radius: 24px;
+      min-height: 320px;
+      background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
     }
 
-    .card h3 {
+    .about-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .about-box p {
       margin-top: 0;
-      margin-bottom: 8px;
+      color: #34302a;
       font-size: 18px;
     }
 
-    .links a {
-      color: #1f1f1f;
-      font-weight: 700;
-      display: inline-block;
-      margin-right: 18px;
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .fact {
+      background: #f8f5ee;
+      border: 1px solid var(--line);
+      padding: 14px;
+      border-radius: 16px;
+      font-weight: 800;
+      color: #34302a;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .image-strip {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .wide-image,
+    .small-image {
+      min-height: 280px;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+    }
+
+    .wide-image {
+      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .small-image {
+      background-image: url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .contact {
+      background: var(--dark);
+      color: white;
+      border-radius: 30px;
+      padding: 38px;
+      border: none;
+      margin: 58px 0 30px;
+    }
+
+    .contact h2 {
       margin-bottom: 10px;
     }
 
+    .contact p {
+      color: #d7d0c5;
+      max-width: 700px;
+    }
+
+    .contact-links {
+      margin-top: 22px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 10px 15px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
     footer {
-      padding: 32px 0;
-      color: #6f6658;
+      color: var(--muted);
       font-size: 14px;
+      padding-bottom: 30px;
+    }
+
+    @media (max-width: 850px) {
+      header {
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 16px;
+      }
+
+      .hero,
+      .about-grid,
+      .image-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        padding: 20px;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .cards,
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card {
+        min-height: 340px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <section class="hero">
-      <div class="eyebrow">Official personal website</div>
-      <h1>Hakan Ikinci</h1>
-      <p class="lead">
-        Education support, localization, content operations, and customer-facing technology.
-        I help make complex systems easier to understand, use, and support.
-      </p>
+  <div class="wrap">
+    <header>
+      <div class="logo">Hakan İkinci</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-      <div class="buttons">
-        <a class="button primary" href="mailto:hknikinci@gmail.com">Contact me</a>
-        <a class="button" href="https://github.com/GioHarper">GitHub</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>About</h2>
-      <p>
-        I work across education support, localization, training content, and technical support.
-        My background combines language, customer education, workflow improvement, and hands-on platform support.
-      </p>
-    </section>
-
-    <section>
-      <h2>Focus areas</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Customer education</h3>
-          <p>Clear guides, training material, and support content that reduce confusion and improve adoption.</p>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Official personal website</div>
+          <h1>Hakan İkinci</h1>
+          <p class="lead">
+            Technology, language, and education. I help make complex systems easier to understand, use, and support.
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#contact">Contact</a>
+            <a class="button" href="#focus">What I Do</a>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Localization</h3>
-          <p>Translation, review, terminology consistency, and multilingual content operations.</p>
+        <div class="photo-card">
+          <p>Support • Localization • Content Operations</p>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <p class="section-intro">
+          A simple professional profile, without unnecessary personal details.
+        </p>
+
+        <div class="about-grid">
+          <div class="side-image"></div>
+
+          <div class="about-box">
+            <p>
+              I work at the intersection of technology, language, and education.
+              My background includes customer support, content operations, localization,
+              training, and digital platforms.
+            </p>
+
+            <p>
+              I enjoy solving problems, improving processes, and helping people use technology more effectively.
+            </p>
+
+            <div class="facts">
+              <div class="fact">Technology</div>
+              <div class="fact">Language</div>
+              <div class="fact">Education</div>
+              <div class="fact">Operations</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="focus">
+        <h2>Focus Areas</h2>
+        <p class="section-intro">
+          Broad enough to protect privacy. Specific enough to show professional direction.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Support Operations</h3>
+            <p>Helping users navigate platforms, workflows, access issues, and product questions.</p>
+          </div>
+
+          <div class="card">
+            <h3>Localization</h3>
+            <p>Translation, language quality, terminology consistency, and multilingual content.</p>
+          </div>
+
+          <div class="card">
+            <h3>Customer Education</h3>
+            <p>Clear guides, training content, and documentation that reduce confusion.</p>
+          </div>
+
+          <div class="card">
+            <h3>Technology</h3>
+            <p>Software platforms, analytics, automation, and practical process improvement.</p>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Technical support</h3>
-          <p>Platform troubleshooting, documentation, user guidance, and process improvement.</p>
+        <div class="image-strip">
+          <div class="wide-image"></div>
+          <div class="small-image"></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <h2>Links</h2>
-      <div class="links">
-        <a href="https://github.com/GioHarper">GitHub</a>
-        <a href="https://medium.com/@hakanikinci">Medium</a>
-        <a href="https://www.linkedin.com/in/hakanikinci">LinkedIn</a>
-      </div>
-    </section>
+      <section id="writing">
+        <h2>Writing</h2>
+        <p class="section-intro">
+          Notes and essays on language, technology, learning, support, and digital systems.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Technology & Learning</h3>
+            <p>Thoughts on how people learn, use, and struggle with digital tools.</p>
+          </div>
+
+          <div class="card">
+            <h3>Language & Localization</h3>
+            <p>Notes on translation, meaning, tone, and multilingual communication.</p>
+          </div>
+
+          <div class="card">
+            <h3>Support & Systems</h3>
+            <p>Observations on better support workflows, documentation, and user experience.</p>
+          </div>
+
+          <div class="card">
+            <h3>Personal Notes</h3>
+            <p>Selected reflections, kept intentionally limited and professional.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>
+          For professional inquiries, use one of the links below.
+          Personal details are intentionally limited on this site.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/hakanikinci">LinkedIn</a>
+          <a href="https://github.com/GioHarper">GitHub</a>
+          <a href="https://medium.com/@hknikinci">Medium</a>
+        </div>
+      </section>
+    </main>
 
     <footer>
-      © 2026 Hakan İkinci. All rights reserved.
+      © 2026 Hakan İkinci. Official personal website.
     </footer>
-  </main>
+  </div>
 </body>
 </html>
