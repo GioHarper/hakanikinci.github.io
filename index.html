@@ -337,7 +337,7 @@
 
     .show-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-top: 28px;
     }
@@ -381,18 +381,14 @@
     }
 
     .show-1 {
-      background-image: url("images/improv-feb27-1.jpg");
-    }
-
-    .show-2 {
       background-image: url("images/improv-mar27-1.jpg");
     }
 
-    .show-3 {
+    .show-2 {
       background-image: url("images/improv-may1-1.jpg");
     }
 
-    .show-4 {
+    .show-3 {
       background-image: url("images/improv-june19-1.jpg");
     }
 
@@ -583,7 +579,7 @@
         <a href="#stage">Stage</a>
         <a href="#moments">Moments</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="themeToggle" type="button">Dark</button>
+        <button class="theme-toggle" id="themeToggle" type="button">💡 Dark Mode</button>
       </nav>
     </header>
 
@@ -699,26 +695,19 @@
         <div class="show-grid">
           <div class="show-card show-1">
             <div class="show-label">
-              <strong>Feb 27, 2026</strong>
+              <strong>Mar 27, 2026</strong>
               <span>Improv show gallery</span>
             </div>
           </div>
 
           <div class="show-card show-2">
             <div class="show-label">
-              <strong>Mar 27, 2026</strong>
-              <span>Improv show gallery</span>
-            </div>
-          </div>
-
-          <div class="show-card show-3">
-            <div class="show-label">
               <strong>May 1, 2026</strong>
               <span>Improv show gallery</span>
             </div>
           </div>
 
-          <div class="show-card show-4">
+          <div class="show-card show-3">
             <div class="show-label">
               <strong>June 19, 2026</strong>
               <span>Improv show gallery</span>
@@ -790,7 +779,9 @@
 
     if (savedTheme === "dark") {
       document.body.classList.add("dark");
-      themeToggle.textContent = "Light";
+      themeToggle.textContent = "💡 Light Mode";
+    } else {
+      themeToggle.textContent = "💡 Dark Mode";
     }
 
     themeToggle.addEventListener("click", () => {
@@ -798,10 +789,10 @@
 
       if (document.body.classList.contains("dark")) {
         localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "Light";
+        themeToggle.textContent = "💡 Light Mode";
       } else {
         localStorage.setItem("theme", "light");
-        themeToggle.textContent = "Dark";
+        themeToggle.textContent = "💡 Dark Mode";
       }
     });
   </script>
