@@ -13,16 +13,27 @@
 
   <style>
     :root {
-      --bg: #f7f7f2;
-      --text: #101319;
-      --muted: #5d6470;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
       --card: #ffffff;
-      --line: #d9dde4;
-      --navy: #111827;
-      --blue: #23395d;
-      --soft-blue: #e7edf7;
-      --accent: #7c5cff;
-      --gold: #c89b3c;
+      --line: #e2e8f0;
+      --dark-card: #0f172a;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --shadow: rgba(15, 23, 42, 0.08);
+    }
+
+    body.dark {
+      --bg: #020617;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --card: #0f172a;
+      --line: #1e293b;
+      --dark-card: #111827;
+      --accent: #60a5fa;
+      --accent-soft: #172554;
+      --shadow: rgba(0, 0, 0, 0.35);
     }
 
     * {
@@ -37,11 +48,12 @@
       margin: 0;
       font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(124, 92, 255, 0.10), transparent 34%),
-        radial-gradient(circle at top right, rgba(35, 57, 93, 0.13), transparent 32%),
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 32%),
+        radial-gradient(circle at top right, rgba(99, 102, 241, 0.10), transparent 30%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
     a {
@@ -69,8 +81,14 @@
       letter-spacing: -0.04em;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
     nav a {
-      margin-left: 22px;
       text-decoration: none;
       color: var(--muted);
       font-weight: 800;
@@ -79,6 +97,17 @@
 
     nav a:hover {
       color: var(--text);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 24px var(--shadow);
     }
 
     .hero {
@@ -95,7 +124,7 @@
       align-items: center;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--blue);
+      color: var(--accent);
       font-weight: 900;
       font-size: 12px;
       margin-bottom: 18px;
@@ -120,7 +149,7 @@
     .lead {
       font-size: 22px;
       max-width: 720px;
-      color: #303744;
+      color: var(--muted);
       margin-bottom: 28px;
     }
 
@@ -132,14 +161,14 @@
     }
 
     .pill {
-      background: rgba(255,255,255,0.75);
+      background: var(--card);
       border: 1px solid var(--line);
-      color: #283142;
+      color: var(--text);
       padding: 9px 13px;
       border-radius: 999px;
       font-weight: 800;
       font-size: 13px;
-      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.04);
+      box-shadow: 0 8px 22px var(--shadow);
     }
 
     .buttons {
@@ -154,42 +183,42 @@
       padding: 13px 19px;
       border-radius: 999px;
       text-decoration: none;
-      border: 1px solid var(--navy);
+      border: 1px solid var(--text);
       font-weight: 900;
     }
 
     .button.primary {
-      background: var(--navy);
-      color: white;
+      background: var(--text);
+      color: var(--bg);
     }
 
     .portrait-card {
       min-height: 500px;
       border-radius: 34px;
       background-image:
-        linear-gradient(to bottom, rgba(17,24,39,0.03), rgba(17,24,39,0.78)),
+        linear-gradient(to bottom, rgba(15,23,42,0.03), rgba(15,23,42,0.78)),
         url("images/portrait.jpg");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 24px 60px rgba(17, 24, 39, 0.22);
-      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 24px 60px var(--shadow);
+      border: 1px solid var(--line);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 28px;
       overflow: hidden;
-      background-color: #1f2937;
+      background-color: #1e293b;
     }
 
     .portrait-card p {
-      color: #eef2f7;
+      color: #f8fafc;
       margin: 0;
       font-weight: 800;
     }
 
     .portrait-card span {
       display: block;
-      color: #cfd6e3;
+      color: #cbd5e1;
       font-weight: 500;
       margin-top: 6px;
     }
@@ -221,7 +250,7 @@
     }
 
     .statement {
-      background: var(--navy);
+      background: var(--dark-card);
       color: white;
       border-radius: 28px;
       padding: 34px;
@@ -229,17 +258,18 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 0 18px 44px var(--shadow);
     }
 
     .statement p {
       font-size: 23px;
       line-height: 1.35;
       margin: 0;
-      color: #f3f4f6;
+      color: #f8fafc;
     }
 
     .small-note {
-      color: #b8c0cc;
+      color: #cbd5e1;
       font-size: 14px;
       margin-top: 28px;
     }
@@ -249,12 +279,12 @@
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 34px;
-      box-shadow: 0 16px 40px rgba(17,24,39,0.05);
+      box-shadow: 0 16px 40px var(--shadow);
     }
 
     .profile-copy p {
       font-size: 18px;
-      color: #303744;
+      color: var(--muted);
       margin-top: 0;
     }
 
@@ -265,12 +295,12 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.82);
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px;
       min-height: 230px;
-      box-shadow: 0 14px 35px rgba(17,24,39,0.05);
+      box-shadow: 0 14px 35px var(--shadow);
     }
 
     .card .number {
@@ -292,16 +322,17 @@
     }
 
     .dark-section {
-      background: var(--navy);
+      background: var(--dark-card);
       color: white;
       border-radius: 36px;
       padding: 42px;
       border: none;
       margin: 42px 0;
+      box-shadow: 0 20px 55px var(--shadow);
     }
 
     .dark-section .section-intro {
-      color: #c9d1de;
+      color: #cbd5e1;
     }
 
     .show-grid {
@@ -320,6 +351,7 @@
       position: relative;
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 18px 44px rgba(0,0,0,0.25);
+      background-color: #1e293b;
     }
 
     .show-card::after {
@@ -379,7 +411,8 @@
       border: 1px solid var(--line);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(17,24,39,0.08);
+      box-shadow: 0 16px 40px var(--shadow);
+      background-color: #1e293b;
     }
 
     .moment::after {
@@ -421,13 +454,14 @@
 
     .contact {
       background:
-        radial-gradient(circle at top right, rgba(124,92,255,0.24), transparent 35%),
-        var(--navy);
+        radial-gradient(circle at top right, rgba(96,165,250,0.24), transparent 35%),
+        var(--dark-card);
       color: white;
       border-radius: 36px;
       padding: 44px;
       border: none;
       margin: 60px 0 30px;
+      box-shadow: 0 20px 55px var(--shadow);
     }
 
     .contact p {
@@ -503,11 +537,8 @@
         flex-direction: column;
       }
 
-      nav a {
-        margin-left: 0;
-        margin-right: 14px;
-        display: inline-block;
-        margin-bottom: 8px;
+      nav {
+        gap: 12px;
       }
 
       .hero {
@@ -545,12 +576,14 @@
   <div class="wrap">
     <header>
       <div class="logo">Hakan İkinci</div>
+
       <nav>
         <a href="#profile">Profile</a>
         <a href="#systems">Systems</a>
         <a href="#stage">Stage</a>
         <a href="#moments">Moments</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" type="button">Dark</button>
       </nav>
     </header>
 
@@ -558,6 +591,7 @@
       <section class="hero">
         <div>
           <div class="eyebrow"><span class="dot"></span> Official personal website</div>
+
           <h1>Hakan İkinci</h1>
 
           <p class="lead">
@@ -589,6 +623,7 @@
 
       <section id="profile">
         <h2>Profile</h2>
+
         <p class="section-intro">
           A public version of who I am professionally and creatively, without putting my private life on display.
         </p>
@@ -598,6 +633,7 @@
             <p>
               I have spent years around global tech platforms, digital tools, language systems, and the messy space where people and software meet.
             </p>
+
             <div class="small-note">
               Clear thinking matters. So does taste, judgment, and knowing what not to overexplain.
             </div>
@@ -621,6 +657,7 @@
 
       <section id="systems">
         <h2>Work & Systems</h2>
+
         <p class="section-intro">
           Not a resume. Just the main areas that define my professional direction.
         </p>
@@ -654,6 +691,7 @@
 
       <section id="stage" class="dark-section">
         <h2>Stage Notes</h2>
+
         <p class="section-intro">
           Selected moments from improv shows, rehearsals, and live performance. Kept visual, light, and limited.
         </p>
@@ -691,6 +729,7 @@
 
       <section id="moments">
         <h2>Selected Moments</h2>
+
         <p class="section-intro">
           Places, scenes, and small visual notes from life and travel. More atmosphere than diary.
         </p>
@@ -721,6 +760,7 @@
 
       <section id="contact" class="contact">
         <h2>Contact</h2>
+
         <p>
           For professional or relevant personal messages, send a note below.
           This opens your email app. Simple, old-school, and good enough.
@@ -735,6 +775,7 @@
 
     <footer>
       <div>© 2026 Hakan İkinci. Official personal website.</div>
+
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/hakanikinci">LinkedIn</a>
         <a href="https://github.com/GioHarper">GitHub</a>
@@ -742,5 +783,27 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      themeToggle.textContent = "Light";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "Light";
+      } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "Dark";
+      }
+    });
+  </script>
 </body>
 </html>
