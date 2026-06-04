@@ -1,22 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hakan İkinci</title>
-  <meta name="description" content="Official personal website of Hakan İkinci.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakan İkinci | Personal Website</title>
+  <meta name="description" content="Official personal website of Hakan İkinci. Education support, localization, content operations, and customer-facing technology." />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f4ef;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid #ddd6c8;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 13px;
+      color: #6f6658;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 0.95;
+      margin: 0 0 24px;
+      letter-spacing: -0.05em;
+    }
+
+    .lead {
+      font-size: 22px;
+      max-width: 760px;
+      color: #3f3b35;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid #1f1f1f;
+      color: #1f1f1f;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: #1f1f1f;
+      color: #fff;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid #ddd6c8;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e4ded2;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .links a {
+      color: #1f1f1f;
+      font-weight: 700;
+      display: inline-block;
+      margin-right: 18px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: #6f6658;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hakan İkinci</h1>
-  <p>This is my official personal website.</p>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Official personal website</div>
+      <h1>Hakan İkinci</h1>
+      <p class="lead">
+        Education support, localization, content operations, and customer-facing technology.
+        I help make complex systems easier to understand, use, and support.
+      </p>
 
-  <h2>About</h2>
-  <p>I work in education support, localization, content operations, and customer-facing tech roles.</p>
+      <div class="buttons">
+        <a class="button primary" href="mailto:YOUR_EMAIL_HERE">Contact me</a>
+        <a class="button" href="https://github.com/GioHarper">GitHub</a>
+      </div>
+    </section>
 
-  <h2>Links</h2>
-  <ul>
-    <li><a href="https://github.com/YOURUSERNAME">GitHub</a></li>
-    <li><a href="https://medium.com/@YOURUSERNAME">Medium</a></li>
-    <li><a href="https://www.linkedin.com/in/YOURUSERNAME">LinkedIn</a></li>
-  </ul>
+    <section>
+      <h2>About</h2>
+      <p>
+        I work across education support, localization, training content, and technical support.
+        My background combines language, customer education, workflow improvement, and hands-on platform support.
+      </p>
+    </section>
+
+    <section>
+      <h2>Focus areas</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Customer education</h3>
+          <p>Clear guides, training material, and support content that reduce confusion and improve adoption.</p>
+        </div>
+
+        <div class="card">
+          <h3>Localization</h3>
+          <p>Translation, review, terminology consistency, and multilingual content operations.</p>
+        </div>
+
+        <div class="card">
+          <h3>Technical support</h3>
+          <p>Platform troubleshooting, documentation, user guidance, and process improvement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <div class="links">
+        <a href="https://github.com/GioHarper">GitHub</a>
+        <a href="https://medium.com/@YOURUSERNAME">Medium</a>
+        <a href="https://www.linkedin.com/in/YOURUSERNAME">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Hakan İkinci. All rights reserved.
+    </footer>
+  </main>
 </body>
 </html>
