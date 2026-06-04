@@ -5,27 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Hakan İkinci</title>
-  <meta name="description" content="Official personal website of Hakan İkinci. Technology, language, education, support, content, and localization." />
+  <meta name="description" content="Official personal website of Hakan İkinci. Tech, software, AI, language, machine learning, and systems." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f5f1e8;
-      --text: #171717;
-      --muted: #625d52;
+      --bg: #f7f7f2;
+      --text: #101319;
+      --muted: #5d6470;
       --card: #ffffff;
-      --line: #ded6c8;
-      --dark: #151515;
-      --accent: #8a5a2b;
+      --line: #d9dde4;
+      --navy: #111827;
+      --blue: #23395d;
+      --soft-blue: #e7edf7;
+      --accent: #7c5cff;
+      --gold: #c89b3c;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 92, 255, 0.10), transparent 34%),
+        radial-gradient(circle at top right, rgba(35, 57, 93, 0.13), transparent 32%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
@@ -35,7 +49,7 @@
     }
 
     .wrap {
-      max-width: 1080px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 28px;
     }
@@ -44,159 +58,204 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0 42px;
+      padding: 18px 0 34px;
       border-bottom: 1px solid var(--line);
     }
 
     .logo {
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-weight: 700;
       font-size: 22px;
+      letter-spacing: -0.04em;
     }
 
     nav a {
       margin-left: 22px;
       text-decoration: none;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--text);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 42px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 46px;
       align-items: center;
-      padding: 72px 0;
+      padding: 74px 0 68px;
     }
 
     .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 13px;
-      margin-bottom: 16px;
+      letter-spacing: 0.16em;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
     }
 
     h1 {
-      font-size: clamp(48px, 8vw, 92px);
-      line-height: 0.92;
-      letter-spacing: -0.07em;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
       margin: 0 0 24px;
     }
 
     .lead {
       font-size: 22px;
-      max-width: 680px;
-      color: #34302a;
+      max-width: 720px;
+      color: #303744;
       margin-bottom: 28px;
+    }
+
+    .signal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      color: #283142;
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.04);
     }
 
     .buttons {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 24px;
     }
 
     .button {
       display: inline-block;
-      padding: 12px 18px;
+      padding: 13px 19px;
       border-radius: 999px;
       text-decoration: none;
-      border: 1px solid var(--dark);
-      font-weight: 800;
+      border: 1px solid var(--navy);
+      font-weight: 900;
     }
 
     .button.primary {
-      background: var(--dark);
+      background: var(--navy);
       color: white;
     }
 
-    .photo-card {
-      background: var(--dark);
-      color: white;
-      min-height: 430px;
-      border-radius: 30px;
-      padding: 28px;
+    .portrait-card {
+      min-height: 500px;
+      border-radius: 34px;
+      background-image:
+        linear-gradient(to bottom, rgba(17,24,39,0.03), rgba(17,24,39,0.78)),
+        url("images/portrait.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 24px 60px rgba(17, 24, 39, 0.22);
+      border: 1px solid rgba(255,255,255,0.7);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.75)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+      padding: 28px;
+      overflow: hidden;
+      background-color: #1f2937;
     }
 
-    .photo-card p {
+    .portrait-card p {
+      color: #eef2f7;
       margin: 0;
-      font-size: 15px;
-      color: #e8e0d2;
+      font-weight: 800;
+    }
+
+    .portrait-card span {
+      display: block;
+      color: #cfd6e3;
+      font-weight: 500;
+      margin-top: 6px;
     }
 
     section {
-      padding: 58px 0;
+      padding: 66px 0;
       border-top: 1px solid var(--line);
     }
 
     h2 {
-      font-size: 34px;
-      letter-spacing: -0.04em;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -0.06em;
       margin: 0 0 18px;
     }
 
     .section-intro {
-      max-width: 720px;
+      max-width: 760px;
       color: var(--muted);
       font-size: 18px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    .about-grid {
+    .profile-panel {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 26px;
-      align-items: stretch;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
     }
 
-    .side-image {
-      border-radius: 24px;
-      min-height: 320px;
-      background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
+    .statement {
+      background: var(--navy);
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .about-box {
+    .statement p {
+      font-size: 23px;
+      line-height: 1.35;
+      margin: 0;
+      color: #f3f4f6;
+    }
+
+    .small-note {
+      color: #b8c0cc;
+      font-size: 14px;
+      margin-top: 28px;
+    }
+
+    .profile-copy {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 16px 40px rgba(17,24,39,0.05);
     }
 
-    .about-box p {
-      margin-top: 0;
-      color: #34302a;
+    .profile-copy p {
       font-size: 18px;
-    }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .fact {
-      background: #f8f5ee;
-      border: 1px solid var(--line);
-      padding: 14px;
-      border-radius: 16px;
-      font-weight: 800;
-      color: #34302a;
+      color: #303744;
+      margin-top: 0;
     }
 
     .cards {
@@ -206,17 +265,25 @@
     }
 
     .card {
-      background: var(--card);
+      background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-      min-height: 210px;
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 230px;
+      box-shadow: 0 14px 35px rgba(17,24,39,0.05);
+    }
+
+    .card .number {
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 28px;
     }
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.03em;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: 22px;
+      letter-spacing: -0.04em;
     }
 
     .card p {
@@ -224,109 +291,251 @@
       color: var(--muted);
     }
 
-    .image-strip {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      margin-top: 30px;
+    .dark-section {
+      background: var(--navy);
+      color: white;
+      border-radius: 36px;
+      padding: 42px;
+      border: none;
+      margin: 42px 0;
     }
 
-    .wide-image,
-    .small-image {
+    .dark-section .section-intro {
+      color: #c9d1de;
+    }
+
+    .show-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .show-card {
       min-height: 280px;
-      border-radius: 24px;
+      border-radius: 26px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.25);
+    }
+
+    .show-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
+    }
+
+    .show-label {
+      position: absolute;
+      z-index: 2;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+    }
+
+    .show-label strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .show-label span {
+      color: #d2d8e2;
+      font-size: 13px;
+    }
+
+    .show-1 {
+      background-image: url("images/improv-mar27-1.jpg");
+    }
+
+    .show-2 {
+      background-image: url("images/improv-apr27-1.jpg");
+    }
+
+    .show-3 {
+      background-image: url("images/improv-may1-1.jpg");
+    }
+
+    .show-4 {
+      background-image: url("images/improv-june19-1.jpg");
+    }
+
+    .moments-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .moment {
+      min-height: 310px;
+      border-radius: 28px;
       background-size: cover;
       background-position: center;
       border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(17,24,39,0.08);
     }
 
-    .wide-image {
-      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
+    .moment::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.58));
     }
 
-    .small-image {
-      background-image: url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80");
+    .moment-label {
+      position: absolute;
+      z-index: 2;
+      color: white;
+      left: 20px;
+      bottom: 18px;
+      right: 20px;
+      font-weight: 900;
+    }
+
+    .moment-label span {
+      display: block;
+      color: #dbe2ec;
+      font-weight: 500;
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    .moment-1 {
+      background-image: url("images/moment-1.jpg");
+    }
+
+    .moment-2 {
+      background-image: url("images/moment-2.jpg");
+    }
+
+    .moment-3 {
+      background-image: url("images/moment-3.jpg");
     }
 
     .contact {
-      background: var(--dark);
+      background:
+        radial-gradient(circle at top right, rgba(124,92,255,0.24), transparent 35%),
+        var(--navy);
       color: white;
-      border-radius: 30px;
-      padding: 38px;
+      border-radius: 36px;
+      padding: 44px;
       border: none;
-      margin: 58px 0 30px;
-    }
-
-    .contact h2 {
-      margin-bottom: 10px;
+      margin: 60px 0 30px;
     }
 
     .contact p {
-      color: #d7d0c5;
-      max-width: 700px;
+      color: #d1d7e2;
+      max-width: 720px;
+      font-size: 18px;
     }
 
-    .contact-links {
-      margin-top: 22px;
+    .mailto-box {
+      margin-top: 26px;
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
     }
 
-    .contact-links a {
+    .mailto-box a {
       color: white;
-      border: 1px solid rgba(255,255,255,0.35);
-      padding: 10px 15px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 13px 18px;
       border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .mailto-box span {
+      color: #aeb8c8;
+      font-size: 14px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 0 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-links a {
+      margin-left: 14px;
       text-decoration: none;
       font-weight: 800;
     }
 
-    footer {
-      color: var(--muted);
-      font-size: 14px;
-      padding-bottom: 30px;
+    @media (max-width: 950px) {
+      .hero,
+      .profile-panel,
+      .moments-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .show-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .portrait-card {
+        min-height: 430px;
+      }
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 620px) {
+      .wrap {
+        padding: 20px;
+      }
+
       header {
         align-items: flex-start;
-        gap: 18px;
+        gap: 16px;
         flex-direction: column;
       }
 
       nav a {
         margin-left: 0;
-        margin-right: 16px;
-      }
-
-      .hero,
-      .about-grid,
-      .image-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .wrap {
-        padding: 20px;
+        margin-right: 14px;
+        display: inline-block;
+        margin-bottom: 8px;
       }
 
       .hero {
         padding: 48px 0;
       }
 
+      .lead {
+        font-size: 19px;
+      }
+
       .cards,
-      .facts {
+      .show-grid {
         grid-template-columns: 1fr;
       }
 
-      .photo-card {
-        min-height: 340px;
+      .dark-section,
+      .contact {
+        padding: 28px;
+        border-radius: 28px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+
+      .footer-links a {
+        margin-left: 0;
+        margin-right: 14px;
       }
     }
   </style>
@@ -337,9 +546,10 @@
     <header>
       <div class="logo">Hakan İkinci</div>
       <nav>
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#writing">Writing</a>
+        <a href="#profile">Profile</a>
+        <a href="#systems">Systems</a>
+        <a href="#stage">Stage</a>
+        <a href="#moments">Moments</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -347,111 +557,164 @@
     <main>
       <section class="hero">
         <div>
-          <div class="eyebrow">Official personal website</div>
+          <div class="eyebrow"><span class="dot"></span> Official personal website</div>
           <h1>Hakan İkinci</h1>
+
           <p class="lead">
-            Technology, language, and education. I help make complex systems easier to understand, use, and support.
+            Tech, software, AI, language, machine learning, and systems.
+            I care about how complex tools become clear, useful, and human.
           </p>
+
+          <div class="signal">
+            <span class="pill">Tech</span>
+            <span class="pill">Software</span>
+            <span class="pill">AI</span>
+            <span class="pill">Language</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Systems</span>
+            <span class="pill">Marvel & DC</span>
+          </div>
+
           <div class="buttons">
-            <a class="button primary" href="#contact">Contact</a>
-            <a class="button" href="#focus">What I Do</a>
+            <a class="button primary" href="#contact">Send a Message</a>
+            <a class="button" href="#systems">Explore</a>
           </div>
         </div>
 
-        <div class="photo-card">
-          <p>Support • Localization • Content Operations</p>
+        <div class="portrait-card">
+          <p>Technology. Language. Systems.</p>
+          <span>A curated public profile, not a full personal archive.</span>
         </div>
       </section>
 
-      <section id="about">
-        <h2>About</h2>
+      <section id="profile">
+        <h2>Profile</h2>
         <p class="section-intro">
-          A simple professional profile, without unnecessary personal details.
+          A public version of who I am professionally and creatively, without putting my private life on display.
         </p>
 
-        <div class="about-grid">
-          <div class="side-image"></div>
-
-          <div class="about-box">
+        <div class="profile-panel">
+          <div class="statement">
             <p>
-              I work at the intersection of technology, language, and education.
-              My background includes customer support, content operations, localization,
-              training, and digital platforms.
+              I have spent years around global tech platforms, digital tools, language systems, and the messy space where people and software meet.
+            </p>
+            <div class="small-note">
+              Clear thinking matters. So does taste, judgment, and knowing what not to overexplain.
+            </div>
+          </div>
+
+          <div class="profile-copy">
+            <p>
+              My work has moved across technology companies, education platforms, localization, training material, documentation, user operations, and internal systems.
             </p>
 
             <p>
-              I enjoy solving problems, improving processes, and helping people use technology more effectively.
+              The common thread is simple: take something complicated, understand how it works, then make it easier to use, explain, improve, or scale.
             </p>
 
-            <div class="facts">
-              <div class="fact">Technology</div>
-              <div class="fact">Language</div>
-              <div class="fact">Education</div>
-              <div class="fact">Operations</div>
+            <p>
+              Outside of work, I’m interested in improv, storytelling, software, AI, machine learning, football, travel, and the fictional universes that shaped a lot of modern imagination.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="systems">
+        <h2>Work & Systems</h2>
+        <p class="section-intro">
+          Not a resume. Just the main areas that define my professional direction.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <div class="number">01</div>
+            <h3>Digital Platforms</h3>
+            <p>Tools, workflows, product behavior, access patterns, and the hidden logic behind how platforms actually run.</p>
+          </div>
+
+          <div class="card">
+            <div class="number">02</div>
+            <h3>Language Systems</h3>
+            <p>Translation, localization, terminology, meaning, tone, and communication across cultures.</p>
+          </div>
+
+          <div class="card">
+            <div class="number">03</div>
+            <h3>AI & Software</h3>
+            <p>Practical interest in software, automation, machine learning, and how AI changes work and learning.</p>
+          </div>
+
+          <div class="card">
+            <div class="number">04</div>
+            <h3>Learning Design</h3>
+            <p>Guides, training content, documentation, and explanations that make complicated ideas usable.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="stage" class="dark-section">
+        <h2>Stage Notes</h2>
+        <p class="section-intro">
+          Selected moments from improv shows, rehearsals, and live performance. Kept visual, light, and limited.
+        </p>
+
+        <div class="show-grid">
+          <div class="show-card show-1">
+            <div class="show-label">
+              <strong>Mar 27, 2026</strong>
+              <span>Improv show gallery</span>
+            </div>
+          </div>
+
+          <div class="show-card show-2">
+            <div class="show-label">
+              <strong>Apr 27, 2026</strong>
+              <span>Improv show gallery</span>
+            </div>
+          </div>
+
+          <div class="show-card show-3">
+            <div class="show-label">
+              <strong>May 1, 2026</strong>
+              <span>Improv show gallery</span>
+            </div>
+          </div>
+
+          <div class="show-card show-4">
+            <div class="show-label">
+              <strong>June 19, 2026</strong>
+              <span>Improv show gallery</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="focus">
-        <h2>Focus Areas</h2>
+      <section id="moments">
+        <h2>Selected Moments</h2>
         <p class="section-intro">
-          Broad enough to protect privacy. Specific enough to show professional direction.
+          Places, scenes, and small visual notes from life and travel. More atmosphere than diary.
         </p>
 
-        <div class="cards">
-          <div class="card">
-            <h3>Support Operations</h3>
-            <p>Helping users navigate platforms, workflows, access issues, and product questions.</p>
+        <div class="moments-grid">
+          <div class="moment moment-1">
+            <div class="moment-label">
+              Places
+              <span>Landscapes, cities, and quiet scenes.</span>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>Localization</h3>
-            <p>Translation, language quality, terminology consistency, and multilingual content.</p>
+          <div class="moment moment-2">
+            <div class="moment-label">
+              Travel
+              <span>Visual notes from the road.</span>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>Customer Education</h3>
-            <p>Clear guides, training content, and documentation that reduce confusion.</p>
-          </div>
-
-          <div class="card">
-            <h3>Technology</h3>
-            <p>Software platforms, analytics, automation, and practical process improvement.</p>
-          </div>
-        </div>
-
-        <div class="image-strip">
-          <div class="wide-image"></div>
-          <div class="small-image"></div>
-        </div>
-      </section>
-
-      <section id="writing">
-        <h2>Writing</h2>
-        <p class="section-intro">
-          Notes and essays on language, technology, learning, support, and digital systems.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <h3>Technology & Learning</h3>
-            <p>Thoughts on how people learn, use, and struggle with digital tools.</p>
-          </div>
-
-          <div class="card">
-            <h3>Language & Localization</h3>
-            <p>Notes on translation, meaning, tone, and multilingual communication.</p>
-          </div>
-
-          <div class="card">
-            <h3>Support & Systems</h3>
-            <p>Observations on better support workflows, documentation, and user experience.</p>
-          </div>
-
-          <div class="card">
-            <h3>Personal Notes</h3>
-            <p>Selected reflections, kept intentionally limited and professional.</p>
+          <div class="moment moment-3">
+            <div class="moment-label">
+              Details
+              <span>Small things worth remembering.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -459,20 +722,24 @@
       <section id="contact" class="contact">
         <h2>Contact</h2>
         <p>
-          For professional inquiries, use one of the links below.
-          Personal details are intentionally limited on this site.
+          For professional or relevant personal messages, send a note below.
+          This opens your email app. Simple, old-school, and good enough.
         </p>
 
-        <div class="contact-links">
-          <a href="https://www.linkedin.com/in/hakanikinci">LinkedIn</a>
-          <a href="https://github.com/GioHarper">GitHub</a>
-          <a href="https://medium.com/@hknikinci">Medium</a>
+        <div class="mailto-box">
+          <a href="mailto:YOUR_EMAIL_HERE?subject=Message%20from%20hakanikinci.com">Send a Message</a>
+          <span>Replace YOUR_EMAIL_HERE in the code with your real email address.</span>
         </div>
       </section>
     </main>
 
     <footer>
-      © 2026 Hakan İkinci. Official personal website.
+      <div>© 2026 Hakan İkinci. Official personal website.</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/hakanikinci">LinkedIn</a>
+        <a href="https://github.com/GioHarper">GitHub</a>
+        <a href="https://medium.com/@hknikinci">Medium</a>
+      </div>
     </footer>
   </div>
 </body>
