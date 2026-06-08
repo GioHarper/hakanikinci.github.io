@@ -4,581 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Hakan Ikinci's Personal Website</title>
-  <meta name="description" content="Official personal website of Hakan İkinci. Tech, software, AI, language, machine learning, and systems." />
+  <title>Hakan İkinci | Tech, Software, AI, Language & Systems</title>
+  <meta name="description" content="Official website of Hakan İkinci. Technology, software, AI, machine learning, language systems, improv, public appearances, and selected creative work." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --text: #0f172a;
-      --muted: #64748b;
-      --card: #ffffff;
-      --line: #e2e8f0;
-      --dark-card: #0f172a;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --shadow: rgba(15, 23, 42, 0.08);
-    }
-
-    body.dark {
-      --bg: #020617;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --card: #0f172a;
-      --line: #1e293b;
-      --dark-card: #111827;
-      --accent: #60a5fa;
-      --accent-soft: #172554;
-      --shadow: rgba(0, 0, 0, 0.35);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 32%),
-        radial-gradient(circle at top right, rgba(99, 102, 241, 0.10), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 28px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0 34px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .logo {
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-weight: 700;
-      font-size: 22px;
-      letter-spacing: -0.04em;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--text);
-    }
-
-    .theme-toggle {
-      border: 1px solid var(--line);
-      background: var(--card);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 46px;
-      align-items: center;
-      padding: 74px 0 68px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent);
-      font-weight: 900;
-      font-size: 12px;
-      margin-bottom: 18px;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    h1 {
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: clamp(52px, 8vw, 96px);
-      line-height: 0.9;
-      letter-spacing: -0.08em;
-      margin: 0 0 24px;
-    }
-
-    .lead {
-      font-size: 22px;
-      max-width: 720px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .signal {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 28px 0;
-    }
-
-    .pill {
-      background: var(--card);
-      border: 1px solid var(--line);
-      color: var(--text);
-      padding: 9px 13px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 13px;
-      box-shadow: 0 8px 22px var(--shadow);
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 13px 19px;
-      border-radius: 999px;
-      text-decoration: none;
-      border: 1px solid var(--text);
-      font-weight: 900;
-    }
-
-    .button.primary {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .portrait-card {
-      min-height: 500px;
-      border-radius: 34px;
-      background-image:
-        linear-gradient(to bottom, rgba(15,23,42,0.03), rgba(15,23,42,0.78)),
-        url("images/portrait.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 24px 60px var(--shadow);
-      border: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px;
-      overflow: hidden;
-      background-color: #1e293b;
-    }
-
-    .portrait-card p {
-      color: #f8fafc;
-      margin: 0;
-      font-weight: 800;
-    }
-
-    .portrait-card span {
-      display: block;
-      color: #cbd5e1;
-      font-weight: 500;
-      margin-top: 6px;
-    }
-
-    section {
-      padding: 66px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    h2 {
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: 42px;
-      line-height: 1;
-      letter-spacing: -0.06em;
-      margin: 0 0 18px;
-    }
-
-    .section-intro {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .profile-panel {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 20px;
-    }
-
-    .statement {
-      background: var(--dark-card);
-      color: white;
-      border-radius: 28px;
-      padding: 34px;
-      min-height: 340px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 18px 44px var(--shadow);
-    }
-
-    .statement p {
-      font-size: 23px;
-      line-height: 1.35;
-      margin: 0;
-      color: #f8fafc;
-    }
-
-    .small-note {
-      color: #cbd5e1;
-      font-size: 14px;
-      margin-top: 28px;
-    }
-
-    .profile-copy {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 34px;
-      box-shadow: 0 16px 40px var(--shadow);
-    }
-
-    .profile-copy p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-top: 0;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      min-height: 230px;
-      box-shadow: 0 14px 35px var(--shadow);
-    }
-
-    .card .number {
-      color: var(--accent);
-      font-weight: 900;
-      margin-bottom: 28px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: 22px;
-      letter-spacing: -0.04em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .dark-section {
-      background: var(--dark-card);
-      color: white;
-      border-radius: 36px;
-      padding: 42px;
-      border: none;
-      margin: 42px 0;
-      box-shadow: 0 20px 55px var(--shadow);
-    }
-
-    .dark-section .section-intro {
-      color: #cbd5e1;
-    }
-
-    .show-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .show-card {
-      min-height: 280px;
-      border-radius: 26px;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 18px 44px rgba(0,0,0,0.25);
-      background-color: #1e293b;
-    }
-
-    .show-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
-    }
-
-    .show-label {
-      position: absolute;
-      z-index: 2;
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-    }
-
-    .show-label strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .show-label span {
-      color: #d2d8e2;
-      font-size: 13px;
-    }
-
-    .show-1 {
-      background-image: url("images/improv-mar27-1.png");
-    }
-
-    .show-2 {
-      background-image: url("images/improv-may1-1.jpg");
-    }
-
-    .show-3 {
-      background-image: url("images/improv-june19-1.png");
-    }
-
-    .moments-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr 1fr;
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .moment {
-      min-height: 310px;
-      border-radius: 28px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 16px 40px var(--shadow);
-      background-color: #1e293b;
-    }
-
-    .moment::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.58));
-    }
-
-    .moment-label {
-      position: absolute;
-      z-index: 2;
-      color: white;
-      left: 20px;
-      bottom: 18px;
-      right: 20px;
-      font-weight: 900;
-    }
-
-    .moment-label span {
-      display: block;
-      color: #dbe2ec;
-      font-weight: 500;
-      margin-top: 4px;
-      font-size: 14px;
-    }
-
-    .moment-1 {
-      background-image: url("images/moment-1.jpg");
-    }
-
-    .moment-2 {
-      background-image: url("images/moment-2.jpg");
-    }
-
-    .moment-3 {
-      background-image: url("images/moment-3.jpg");
-    }
-
-    .contact {
-      background:
-        radial-gradient(circle at top right, rgba(96,165,250,0.24), transparent 35%),
-        var(--dark-card);
-      color: white;
-      border-radius: 36px;
-      padding: 44px;
-      border: none;
-      margin: 60px 0 30px;
-      box-shadow: 0 20px 55px var(--shadow);
-    }
-
-    .contact p {
-      color: #d1d7e2;
-      max-width: 720px;
-      font-size: 18px;
-    }
-
-    .mailto-box {
-      margin-top: 26px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .mailto-box a {
-      color: white;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 13px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 900;
-    }
-
-    .mailto-box span {
-      color: #aeb8c8;
-      font-size: 14px;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      padding: 10px 0 34px;
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-links a {
-      margin-left: 14px;
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    @media (max-width: 950px) {
-      .hero,
-      .profile-panel,
-      .moments-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cards,
-      .show-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .portrait-card {
-        min-height: 430px;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .wrap {
-        padding: 20px;
-      }
-
-      header {
-        align-items: flex-start;
-        gap: 16px;
-        flex-direction: column;
-      }
-
-      nav {
-        gap: 12px;
-      }
-
-      .hero {
-        padding: 48px 0;
-      }
-
-      .lead {
-        font-size: 19px;
-      }
-
-      .cards,
-      .show-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .dark-section,
-      .contact {
-        padding: 28px;
-        border-radius: 28px;
-      }
-
-      footer {
-        flex-direction: column;
-      }
-
-      .footer-links a {
-        margin-left: 0;
-        margin-right: 14px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hakan İkinci",
+    "url": "https://hakanikinci.com",
+    "knowsAbout": [
+      "Technology",
+      "Software",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Language",
+      "Localization",
+      "Digital Systems",
+      "Education Technology",
+      "Improv"
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <div class="logo">Hakan İkinci</div>
+      <a class="logo" href="index.html">Hakan İkinci</a>
 
       <nav>
-        <a href="#profile">Profile</a>
-        <a href="#systems">Systems</a>
-        <a href="#stage">Stage</a>
-        <a href="#moments">Moments</a>
-        <a href="#contact">Contact</a>
+        <a href="about.html">About</a>
+        <a href="improv.html">Improv</a>
+        <a href="appearances.html">Appearances</a>
+        <a href="contact.html">Contact</a>
         <button class="theme-toggle" id="themeToggle" type="button">💡 Dark Mode</button>
       </nav>
     </header>
@@ -606,59 +70,52 @@
           </div>
 
           <div class="buttons">
-            <a class="button primary" href="#contact">Send a Message</a>
-            <a class="button" href="#systems">Explore</a>
+            <a class="button primary" href="contact.html">Send a Message</a>
+            <a class="button" href="about.html">About</a>
           </div>
         </div>
 
-        <div class="portrait-card">
-          <p></p>
-          <span>All rights reserved.</span>
-        </div>
+        <div class="portrait-card"></div>
       </section>
 
-      <section id="profile">
+      <section>
         <h2>Profile</h2>
-
         <p class="section-intro">
-          A public version of who I am professionally.
+          A short public profile around technology, language, software, AI, systems, and creative work.
         </p>
 
-        <div class="profile-panel">
-          <div class="statement">
+        <div class="grid two">
+          <div class="card">
+            <div class="number">01</div>
+            <h3>Work & Systems</h3>
             <p>
-              I have spent years around global tech platforms, digital tools, language systems, and the perfect middle ground where people and software meet.
+              Hakan İkinci has worked around global tech platforms, digital tools, language systems, documentation, localization, and the practical side of how software gets used.
             </p>
-
-            <div class="small-note">
-              Clear thinking matters. So does taste, judgment, and knowing what not to overexplain.
+            <div class="buttons">
+              <a class="button" href="about.html">Read More</a>
             </div>
           </div>
 
-          <div class="profile-copy">
+          <div class="card">
+            <div class="number">02</div>
+            <h3>Public Appearance</h3>
             <p>
-              My work has moved across technology companies, crypto currencies, education platforms, localization, training material, documentation, user operations, and internal systems.
+              A guest speaker conversation featuring Hakan İkinci, available through video and podcast platforms.
             </p>
-
-            <p>
-              The common thread is simple: take something complicated, understand how it works, then make it easier to use, explain, improve, or scale.
-            </p>
-
-            <p>
-              Outside of work, I’m interested in improv, storytelling, software, AI, machine learning, football, travel, and the fictional universes that shaped a lot of modern imagination.
-            </p>
+            <div class="buttons">
+              <a class="button" href="appearances.html">Watch & Listen</a>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="systems">
-        <h2>Work & Systems</h2>
-
+        <h2>Systems I Think About</h2>
         <p class="section-intro">
-          Main areas I've enjoyed working with
+          Not a resume. Just the areas that define the professional and intellectual direction of this site.
         </p>
 
-        <div class="cards">
+        <div class="grid four">
           <div class="card">
             <div class="number">01</div>
             <h3>Digital Platforms</h3>
@@ -674,7 +131,7 @@
           <div class="card">
             <div class="number">03</div>
             <h3>AI & Software</h3>
-            <p>Practical interest in software, automation, machine learning, and how AI changes work and learning.</p>
+            <p>Software, automation, machine learning, and how AI changes work, learning, and communication.</p>
           </div>
 
           <div class="card">
@@ -685,116 +142,80 @@
         </div>
       </section>
 
-      <section id="stage" class="dark-section">
+      <section class="dark-section">
         <h2>Stage Notes</h2>
-
         <p class="section-intro">
           Selected moments from improv shows, rehearsals, and live performance.
         </p>
 
-        <div class="show-grid">
-          <div class="show-card show-1">
-            <div class="show-label">
+        <div class="grid three">
+          <div class="image-card mar27">
+            <div class="image-label">
               <strong>Mar 27, 2026</strong>
               <span>Improv show gallery</span>
             </div>
           </div>
 
-          <div class="show-card show-2">
-            <div class="show-label">
+          <div class="image-card may1">
+            <div class="image-label">
               <strong>May 1, 2026</strong>
               <span>Improv show gallery</span>
             </div>
           </div>
 
-          <div class="show-card show-3">
-            <div class="show-label">
+          <div class="image-card june19">
+            <div class="image-label">
               <strong>June 19, 2026</strong>
               <span>Improv show gallery</span>
             </div>
           </div>
         </div>
+
+        <div class="buttons">
+          <a class="button primary" href="improv.html">Open Improv Page</a>
+        </div>
       </section>
 
-      <section id="moments">
+      <section>
         <h2>Selected Moments</h2>
-
         <p class="section-intro">
-          Places, scenes, and small visual notes from life and travel. 
+          Places, scenes, and small visual notes from life and travel. More atmosphere than diary.
         </p>
 
-        <div class="moments-grid">
-          <div class="moment moment-1">
-            <div class="moment-label">
-              Places
+        <div class="grid three">
+          <div class="image-card moment1">
+            <div class="image-label">
+              <strong>Places</strong>
               <span>Landscapes, cities, and quiet scenes.</span>
             </div>
           </div>
 
-          <div class="moment moment-2">
-            <div class="moment-label">
-              Travel
+          <div class="image-card moment2">
+            <div class="image-label">
+              <strong>Travel</strong>
               <span>Visual notes from the road.</span>
             </div>
           </div>
 
-          <div class="moment moment-3">
-            <div class="moment-label">
-              Details
+          <div class="image-card moment3">
+            <div class="image-label">
+              <strong>Details</strong>
               <span>Small things worth remembering.</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="contact" class="contact">
-        <h2>Contact</h2>
-
-        <p>
-          For professional or relevant personal messages, send a note below.
-          This opens your email app.
-        </p>
-
-        <div class="mailto-box">
-          <a href="mailto:hknikinci@gmail.com?subject=Message%20from%20hakanikinci.com">Send a Message</a>
-          <span>Thank you for your interest.</span>
         </div>
       </section>
     </main>
 
     <footer>
       <div>© 2026 Hakan İkinci. Official personal website.</div>
-
       <div class="footer-links">
-        <a href="https://www.linkedin.com/">LinkedIn</a>
-        <a href="https://github.com/">GitHub</a>
-        <a href="https://medium.com/">Medium</a>
+        <a href="https://medium.com/@hknikinci">Medium</a>
+        <a href="contact.html">Contact</a>
       </div>
     </footer>
   </div>
 
-  <script>
-    const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      themeToggle.textContent = "💡 Light Mode";
-    } else {
-      themeToggle.textContent = "💡 Dark Mode";
-    }
-
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-
-      if (document.body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "💡 Light Mode";
-      } else {
-        localStorage.setItem("theme", "light");
-        themeToggle.textContent = "💡 Dark Mode";
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
