@@ -39,98 +39,126 @@
   nav.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
 })();
 
-// Homepage portrait collection.
+// Homepage portrait collection. One rotation timer and a bounded transition cache.
 (() => {
   const carousel = document.querySelector('.portrait-carousel');
   if (!carousel) return;
   const screen = carousel.querySelector('.portrait-screen');
   const slides = [...screen.querySelectorAll('.portrait-slide')];
+  if (slides.length < 2) return;
   const controls = screen.querySelector('.portrait-controls');
   const pause = controls.querySelector('.portrait-pause');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0, timer, busy = false, hovered = false, focused = false, visible = true;
+  const displacement = document.querySelector('#tv-wave feDisplacementMap');
+  const waveMap = document.querySelector('.tv-wave-map');
+  const red = document.querySelector('.tv-red-offset');
+  const blue = document.querySelector('.tv-blue-offset');
+  const noise = document.querySelector('.tv-static');
+  let index = 0, rotationTimer = null, frame = null, fallback = null;
+  let finishTransition = null, visible = true, suspended = false;
   let userPaused = motion.matches;
+  let maps = null;
   controls.hidden = false;
-  const updatePause = () => {
+
+  function distortionMaps() {
+    if (maps) return maps;
+    maps = Array.from({length: 12}, (_, n) => {
+      const phase = n / 12;
+      const bands = Array.from({length: 128}, (_, row) => {
+        const y = row / 128;
+        const broad = Math.sin(y * Math.PI * 3.3 + phase * Math.PI * 4) * 83;
+        const fine = Math.sin(y * Math.PI * 17 - phase * Math.PI * 12) * 14;
+        const tear = Math.exp(-Math.pow((y - (0.12 + phase * 0.75)) / 0.043, 2)) * 80;
+        const value = Math.round(Math.max(8, Math.min(247, 128 + broad + fine + tear)));
+        return `<rect y="${row * 5}" width="64" height="5" fill="rgb(${value},128,128)"/>`;
+      }).join('');
+      return 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="64" height="640">${bands}</svg>`);
+    });
+    return maps;
+  }
+  function updatePause() {
     pause.textContent = userPaused ? '▶' : 'Ⅱ';
     pause.setAttribute('aria-label', userPaused ? 'Play photo rotation' : 'Pause photo rotation');
-  };
+  }
+  function canRotate() { return !userPaused && visible && !document.hidden && !suspended; }
   function schedule() {
-    clearTimeout(timer);
-    if (!userPaused && !hovered && !focused && visible && !document.hidden && !busy) {
-      timer = setTimeout(() => change(1), 6000);
+    clearTimeout(rotationTimer);
+    rotationTimer = null;
+    if (canRotate() && !finishTransition) {
+      rotationTimer = setTimeout(() => { rotationTimer = null; change(1); }, 6000);
     }
   }
-  async function change(direction) {
-    if (busy) return;
-    busy = true;
-    clearTimeout(timer);
-    let next = (index + direction + slides.length) % slides.length;
-    try { await slides[next].decode(); } catch (_) { busy = false; schedule(); return; }
-    const swap = () => {
+  function change(direction) {
+    if (finishTransition) return;
+    clearTimeout(rotationTimer);
+    rotationTimer = null;
+    // Never wait indefinitely for decode(). Skip unavailable images and retry later.
+    let next = index;
+    for (let step = 1; step < slides.length; step++) {
+      const candidate = (index + direction * step + slides.length) % slides.length;
+      if (slides[candidate].complete && slides[candidate].naturalWidth > 0) { next = candidate; break; }
+    }
+    if (next === index) { schedule(); return; }
+    let swapped = false;
+    function swap() {
+      if (swapped) return;
+      swapped = true;
       slides[index].classList.remove('is-current');
       slides[index].setAttribute('aria-hidden', 'true');
       index = next;
       slides[index].classList.add('is-current');
       slides[index].removeAttribute('aria-hidden');
-
-    };
-    if (motion.matches) {
-      swap(); busy = false; schedule(); return;
     }
+    function finish() {
+      if (finishTransition !== finish) return;
+      cancelAnimationFrame(frame);
+      clearTimeout(fallback);
+      frame = fallback = null;
+      swap();
+      screen.classList.remove('is-tuning');
+      if (displacement) displacement.setAttribute('scale', '0');
+      if (red) red.setAttribute('dx', '0');
+      if (blue) blue.setAttribute('dx', '0');
+      if (waveMap) waveMap.removeAttribute('href');
+      finishTransition = null;
+      schedule();
+    }
+    finishTransition = finish;
+    if (motion.matches || document.hidden || suspended || !visible || !displacement || !waveMap) { finish(); return; }
+    const textures = distortionMaps();
     screen.classList.add('is-tuning');
-    const displacement = document.querySelector('#tv-wave feDisplacementMap');
-    const waveMap = document.querySelector('.tv-wave-map');
-    const red = document.querySelector('.tv-red-offset');
-    const blue = document.querySelector('.tv-blue-offset');
-    const noise = document.querySelector('.tv-static');
-    const maps = Array.from({length: 36}, (_, frame) => {
-      const phase = frame / 36;
-      const bands = Array.from({length: 160}, (_, row) => {
-        const y = row / 160;
-        const broadWave = Math.sin(y * Math.PI * 3.3 + phase * Math.PI * 4) * 83;
-        const fineWave = Math.sin(y * Math.PI * 17 - phase * Math.PI * 12) * 14;
-        const tear = Math.exp(-Math.pow((y - (0.12 + phase * 0.75)) / 0.043, 2)) * 80;
-        const value = Math.round(Math.max(8, Math.min(247, 128 + broadWave + fineWave + tear)));
-        return `<rect y="${row * 4}" width="64" height="4" fill="rgb(${value},128,128)"/>`;
-      }).join('');
-      return 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="64" height="640">${bands}</svg>`);
-    });
     const started = performance.now();
-    let swapped = false;
     function ripple(now) {
+      if (finishTransition !== finish) return;
       const progress = Math.min(1, (now - started) / 260);
-      if (motion.matches) {
-        if (!swapped) swap();
-        displacement.setAttribute('scale', '0');
-        screen.classList.remove('is-tuning'); busy = false; schedule(); return;
-      }
+      if (progress >= 1 || motion.matches || document.hidden || suspended || !visible) { finish(); return; }
       const envelope = Math.pow(Math.sin(Math.PI * progress), 1.15);
       displacement.setAttribute('scale', String(42 * envelope));
-      waveMap.setAttribute('href', maps[Math.min(35, Math.floor(progress * 36))]);
+      waveMap.setAttribute('href', textures[Math.min(11, Math.floor(progress * 12))]);
       red.setAttribute('dx', String(6 * envelope));
       blue.setAttribute('dx', String(-6 * envelope));
       noise.setAttribute('seed', String(Math.floor(progress * 28) + 2));
-      if (progress >= 0.48 && !swapped) { swap(); swapped = true; }
-      if (progress < 1) requestAnimationFrame(ripple);
-      else {
-        displacement.setAttribute('scale', '0');
-        screen.classList.remove('is-tuning'); busy = false; schedule();
-      }
+      if (progress >= 0.48) swap();
+      frame = requestAnimationFrame(ripple);
     }
-    requestAnimationFrame(ripple);
+    // Settle even if animation frames stall or the browser interrupts rendering.
+    fallback = setTimeout(finish, 500);
+    frame = requestAnimationFrame(ripple);
+  }
+  function recover() {
+    if (finishTransition) finishTransition();
+    schedule();
   }
   controls.querySelector('.portrait-prev').addEventListener('click', () => change(-1));
   controls.querySelector('.portrait-next').addEventListener('click', () => change(1));
-  pause.addEventListener('click', () => { userPaused = !userPaused; updatePause(); schedule(); });
-  carousel.addEventListener('mouseenter', () => { hovered = true; schedule(); });
-  carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
-  carousel.addEventListener('focusin', () => { focused = true; schedule(); });
-  carousel.addEventListener('focusout', () => { requestAnimationFrame(() => { focused = carousel.contains(document.activeElement); schedule(); }); });
-  document.addEventListener('visibilitychange', schedule);
-  motion.addEventListener('change', () => { if (motion.matches) userPaused = true; updatePause(); schedule(); });
+  pause.addEventListener('click', () => { userPaused = !userPaused; updatePause(); recover(); });
+  // Touch hover and retained button focus must never silently pause rotation.
+  document.addEventListener('visibilitychange', recover);
+  window.addEventListener('pagehide', () => { suspended = true; recover(); });
+  window.addEventListener('pageshow', () => { suspended = false; recover(); });
+  motion.addEventListener('change', () => { if (motion.matches) userPaused = true; updatePause(); recover(); });
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => { visible = entries[0].isIntersecting; schedule(); }, {threshold: .1}).observe(screen);
+    new IntersectionObserver(entries => { visible = entries[0].isIntersecting; recover(); }, {threshold: .1}).observe(screen);
   }
   updatePause(); schedule();
 })();
