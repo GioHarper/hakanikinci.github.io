@@ -47,3 +47,7 @@ html{scroll-padding-top:calc(var(--header-height) + 20px)}
 /* Fast retune, with no zoom, scaling, or movement of the photo itself. */
 .portrait-screen.is-tuning .portrait-slide.is-current{animation:none!important;transform:none!important}
 .portrait-screen.is-tuning .tv-interference{animation:tv-analog-lines .26s linear both}
+
+/* Give the header name the same typographic identity as the page headings. */
+.header .brand-name{font-family:"Manrope",Arial,sans-serif;font-size:20px;font-weight:700;letter-spacing:-.035em;line-height:1.25}
+@media(max-width:600px){.header .brand-name{font-size:16px;padding-left:10px}.header .brand{gap:10px}}
